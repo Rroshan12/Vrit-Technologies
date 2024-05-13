@@ -6,7 +6,7 @@
     <body>
 
 
-        <div  id="color-div"></div>
+        <div onclick="handleClick()" id="color-div"></div>
 
 
         <script>
@@ -15,7 +15,24 @@
             element.style.height='300px';
             element.style.background='red';
 
-            console.log(element);
+
+            function handleClick()
+            {
+
+
+
+                let colors=['red','green','blue','black','yellow'];
+
+                let randomColor = colors[Math.floor(Math.random()* colors.length)];
+
+                element.style.background=randomColor;
+
+
+
+
+            }
+
+
 
 
 
