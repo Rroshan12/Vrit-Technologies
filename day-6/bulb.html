@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Day 6</title>
+    </head>
+    <body>
+
+        <div id="bulb-container" ><img src="1.png"/> </div>
+
+        <button onclick="onLight()">On</button>
+        <button onclick="offLight()">Off</button>
+
+
+        <script>
+
+            function onLight()
+            {
+                let bulbContainer = document.getElementById('bulb-container');
+                let  imageTag = document.createElement('img');
+                imageTag.src = '2.png';
+                bulbContainer.innerHTML='';
+
+                bulbContainer.appendChild(imageTag);
+            }
+
+            function offLight()
+            {
+                let bulbContainer = document.getElementById('bulb-container');
+                let  imageTag = document.createElement('img');
+                imageTag.src = '1.png';
+                
+                bulbContainer.innerHTML='';
+                bulbContainer.appendChild(imageTag);
+                
+            }
+
+
+
+
+
+
+       
+
+
+       
+      
+
+
+        </script>
+
+    </body>
+</html>
