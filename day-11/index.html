@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Day 11</title>
+
+</head>
+
+<body>
+    <h1>Promises</h1>
+
+<script>
+
+
+function makePayement(user)
+{
+
+    if(checkPermission(user))
+    {
+        
+        
+       return downloadTicket();
+    }
+
+    return("permission failed")
+
+
+}
+
+function downloadTicket()
+{
+    return ('downloded ticket');
+}
+
+function checkPermission(username)
+{
+
+    if(username==='roshan')
+    {
+        return true;
+    }
+    
+    return false;
+
+
+}
+
+console.log(makePayement('hari'));
+
+
+
+</script>
+
+</body>
+
+
+
+</html>

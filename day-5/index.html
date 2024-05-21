@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>day 5</title>
+
+    </head>
+    <body>
+
+
+        <div onclick="handleClick()" id="color-div"></div>
+
+
+        <script>
+            var element = document.getElementById('color-div');
+            element.style.width='200px';
+            element.style.height='300px';
+            element.style.background='red';
+
+
+            function handleClick()
+            {
+
+
+
+                let colors=['red','green','blue','black','yellow'];
+
+                let randomColor = colors[Math.floor(Math.random()* colors.length)];
+
+                element.style.background=randomColor;
+
+
+
+
+            }
+
+
+
+
+
+        </script>
+
+    </body>
+
+</html>

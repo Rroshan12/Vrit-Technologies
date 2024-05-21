@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #game-board {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background: #e3e3e3;
+        }
+        .mosquito {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-board"></div>
+    <p>Your Score is <span id="score">0</span></p>
+
+    <script>
+        class Game {
+            constructor(gameBoardId, scoreElementId) {
+                this.gameBoard = document.getElementById(gameBoardId);
+                this.scoreElement = document.getElementById(scoreElementId);
+                this.score = 0;
+                this.mosquito = null;
+                this.init();
+            }
+
+            init() {
+                this.createBoard();
+                this.spawnMosquito();
+                setInterval(() => {
+                    this.spawnMosquito();
+                }, 2000);
+            }
+
+            createBoard() {
+                this.gameBoard.style.width = '500px';
+                this.gameBoard.style.height = '500px';
+                this.gameBoard.style.background = '#e3e3e3';
+            }
+
+            spawnMosquito() {
+                if (this.mosquito) {
+                    this.gameBoard.removeChild(this.mosquito);
+                }
+
+                this.mosquito = document.createElement('img');
+                this.mosquito.src = 'a.jpg';
+                this.mosquito.className = 'mosquito';
+
+                const top = Math.floor(Math.random() * (500 - 40));
+                const left = Math.floor(Math.random() * (500 - 40));
+
+                this.mosquito.style.top = `${top}px`;
+                this.mosquito.style.left = `${left}px`;
+
+                this.mosquito.addEventListener('click', () => this.hitMosquito());
+
+                this.gameBoard.appendChild(this.mosquito);
+            }
+
+            hitMosquito() {
+                this.score++;
+                this.updateScore();
+                this.playSound('gun.mp3');
+                this.spawnMosquito();
+            }
+
+            updateScore() {
+                this.scoreElement.textContent = this.score;
+            }
+
+            playSound(soundFile) {
+                const audio = new Audio(soundFile);
+                audio.play();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new Game('game-board', 'score');
+        });
+    </script>
+</body>
+</html>
