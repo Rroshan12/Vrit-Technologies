@@ -1,0 +1,66 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <div id="container"></div>
+        <script>
+
+     const productList=[{
+        name:'Addidas',
+        imagePath:'./addidas.png',
+        price:200,
+        size:'xl',
+        stock:10,
+        color:['red','green','blue']
+     },
+     {
+        name:'Addidas',
+        imagePath:'./addidas.png',
+        price:200,
+        size:'xl',
+        stock:10,
+        color:['red','green','blue']
+     },
+     {
+        name:'Addidas',
+        imagePath:'./addidas.png',
+        price:200,
+        size:'xl',
+        stock:10,
+        color:['red','green','blue']
+     }]
+
+
+        productList.map((item)=>{
+            console.log('item', item);
+            let divref = document.getElementById('container');
+            let elem = document.createElement('p')
+            let elem1 = document.createElement('p')
+            let elem2 = document.createElement('p')
+            let card = document.createElement('div')
+            
+            elem.textContent=item.name;
+            elem1.textContent=item.size;
+            elem2.textContent=item.color;
+
+            card.appendChild(elem);
+            card.appendChild(elem1);
+            card.appendChild(elem2);
+
+            card.style.background='red';
+            card.style.color='white';
+
+            divref.appendChild(card);
+
+
+
+        })
+
+
+
+        </script>
+       
+    </body>
+</html>
