@@ -1,0 +1,36 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <div>Promises</div>
+
+        <script>
+
+            function createPayment()
+            {
+                return new Promise((resolve, reject)=>{
+
+                    resolve("payment sucess");
+                })
+
+               
+            }
+
+            function downloadTicket()
+            {
+
+            }
+
+            console.log(createPayment().then((res)=> downloadTicket() ).catch((error)=>{
+                console.log('err', error)
+            }).finally((res)=>{
+                console.log('kjsdhf', res)
+            }));
+
+
+
+        </script>
+    </body>
+</html>
