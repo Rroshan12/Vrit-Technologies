@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>Day 17</title>
+</head>
+
+<body>
+
+    <div>
+
+        <div ></div>
+        <div class="active gg"></div>
+
+    </div>
+
+
+    <script>
+
+
+
+function add()
+{
+    let a =1;
+
+    console.log('add',a)
+
+    return function multiply()
+    {
+        console.log('multiply', a)
+
+    }
+}
+
+const multiplyRef = add()();
+
+
+(function myFunc() {
+  // Beginning of function
+  console.log('greeting');
+})(); 
+
+
+var a = [1,2,3,4, 4, 5,6,5,6,7,7]
+
+var unique = [... new Set(a)];
+
+console.log('ff', unique);
+
+
+
+
+var a = [1,2,3];
+
+var b = [4,5,6]
+
+function spiliting()
+{
+    console.log('spillited')
+}
+
+
+Array.prototype.spiliting = spiliting;
+
+
+console.log(a.spiliting());
+console.log(b.spiliting())
+
+
+
+//	01010
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

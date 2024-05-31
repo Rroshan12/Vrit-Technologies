@@ -1,0 +1,93 @@
+<html>
+    <head>
+<title>Day 18</title>
+    </head>
+    <body>
+
+        <script>
+
+
+const color = {
+    name:'roshan'
+}
+const person = [{name:"John", age:25}, {name:"Hari", age:16}];
+
+
+
+ const bb = person.map((item)=>{
+    
+    item.salary = 1000;
+    return item
+ })
+
+ console.log('bb', bb)
+
+
+
+const ff = person.forEach((item)=> {
+    console.log('item for', item)
+
+    return item;
+})
+
+console.log('ff', ff)
+
+const cars = ["BMW", "Volvo", "Mini"];
+
+for (let x of cars) {
+
+    
+  console.log('x',x);
+}
+
+
+
+
+var a=[1,2,3,4];
+var b =0;
+while (a.length > b) {
+
+    console.log(a[b])
+  b++;
+}
+
+
+
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  console.log('break', i)
+}
+
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { continue; }
+  console.log('continue', i)
+}
+
+
+
+const letters = new Set([1,2,3]);
+
+
+
+
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+
+
+
+
+console.log(fruits.get("apples"))
+
+
+console.log(fruits);
+
+
+
+        </script>
+
+    </body>
+</html>
