@@ -1,0 +1,25 @@
+.submit{
+    background: blue;
+    color:white;
+}
+.download{
+    background: green;
+    color:white;
+}
+
+.cancel{
+    background: black;
+    color:white;
+}
+.export{
+    background: olive;
+    color:white;
+}
+
+.search{
+    background: olive;
+    color: white;
+    align-items: center;
+    display: flex;
+    gap:15px;
+}

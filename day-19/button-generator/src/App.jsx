@@ -1,5 +1,6 @@
 import "./App.css";
 import ButtonFactory from "./component/button";
+import Wrapper from "./component/wrapper";
 
 
 
@@ -7,14 +8,15 @@ import ButtonFactory from "./component/button";
 
 function App() {
   return (
-    <>
+    <Wrapper>
+
       <ButtonFactory type="download"/>
       <ButtonFactory type="cancel"/>
       <ButtonFactory type="export"/>
      
 
 
-    </>
+    </Wrapper>
   );
 }
 

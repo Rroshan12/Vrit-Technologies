@@ -9,11 +9,9 @@ import axios from 'axios'
 
 function App() {
 
-  const[themeState, setThemeState] = useState(false)
+const[themeState, setThemeState] = useState(false)
 
-  const[data, setData] = useState([]);
-
-
+const[data, setData] = useState([]);
 function fetchData()
   {
 
