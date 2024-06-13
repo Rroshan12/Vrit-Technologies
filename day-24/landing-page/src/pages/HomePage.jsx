@@ -80,7 +80,7 @@ function HomePage() {
       <ThemeProvider theme={!isLightMode ? themeDark : themeLight} >
          <HomeWrapper>
      
-      <NavItemBar toggleLightMode={handleToggle}/>
+      <NavItemBar toggleLightMode={handleToggle} isLightMood={isLightMode}/>
         <Container>
           <LeftPart><Title><TitleRed>Lorem ipsum</TitleRed> dolor, sit amet consectetur adipisicing elit. Sint</Title><br/><Desc>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate nemo fugit eligendi odit aliquam distinctio</Desc> <br/><br/><ButtonFactory type="knowme"/></LeftPart>
           <RightPart>    <img src={Hero} style={{width:'100%'}}/></RightPart>

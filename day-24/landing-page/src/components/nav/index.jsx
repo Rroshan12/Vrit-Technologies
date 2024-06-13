@@ -4,6 +4,7 @@ import NavMidPart from './NavMidPart'
 import ButtonFactory from '../button'
 import styled from 'styled-components'
 import Sun from '../../assets/images/sun.png'
+import Moon from '../../assets/images/moon.png'
 
 
 const Wrapper = styled.div`
@@ -20,7 +21,7 @@ gap:5px;
 cursor : pointer !important;
 z-index:10000;
 `
-function NavItemBar({toggleLightMode}) {
+function NavItemBar({toggleLightMode, isLightMood}) {
 
 
 
@@ -30,7 +31,11 @@ function NavItemBar({toggleLightMode}) {
         <NavMidPart/>
 
         <NavLastPart>
-          <img onClick={toggleLightMode} src={Sun}/>
+          {
+            isLightMood ?       <img onClick={toggleLightMode} src={Sun}/> :  <img onClick={toggleLightMode} src={Moon}/>
+          }
+    
+         
           <ButtonFactory type="getintouch"/>
         </NavLastPart>
 
