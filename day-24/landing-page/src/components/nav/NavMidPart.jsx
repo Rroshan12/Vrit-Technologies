@@ -10,6 +10,7 @@ gap:30px;
 color:  ${props => props.theme.primaryTextColor};
 font-family: "Lexend Deca", sans-serif;
 padding-top:15px;
+z-index:100;
 
 a{
 text-decoration:none;

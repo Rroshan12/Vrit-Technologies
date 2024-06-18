@@ -4,7 +4,8 @@ import styled, { ThemeProvider } from "styled-components";
 import { themeDark, themeLight } from "../theme";
 import Hero from "../assets/images/hero.png";
 import ButtonFactory from "../components/button";
-
+import IconFactory from "../components/icons";
+import Phone from "../assets/images/phone.png";
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -13,7 +14,6 @@ const Container = styled.div`
 
 const LeftPart = styled.div`
   width: 50%;
-  height: 650px;
   text-align: left;
   margin: 15px;
 `;
@@ -25,19 +25,23 @@ const ContactWrapper = styled.div`
 
   border-radius: 10px;
   background: ${(props) => props.theme.contactWrapperColor};
-  padding-left:40px;
-  padding-top:10px;
-
+  padding-left: 40px;
+  padding-top: 10px;
+  
+  padding-bottom:20px;
 `;
 
 const ConnectWrapper = styled.div`
   width: 590px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  height: 100%;
   border-radius: 10px;
   height: 400px;
   background: ${(props) => props.theme.contactWrapperColor};
+
+  padding-left:20px;
+  padding-top:15px;
+
 `;
 
 const PhoneWrapper = styled.div`
@@ -48,6 +52,12 @@ const PhoneWrapper = styled.div`
   border-radius: 10px;
   height: 400px;
   background: ${(props) => props.theme.contactWrapperColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 400px;
+  }
 `;
 
 const RightPart = styled.div`
@@ -57,7 +67,7 @@ const RightPart = styled.div`
   flex-direction: column;
   gap: 40px;
   margin-left: 45px;
-   margin-top: 45px;
+  margin-top: 45px;
 `;
 
 const HomeWrapper = styled.div`
@@ -128,7 +138,7 @@ const Label = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  color: ${props => props.theme.primaryTextColor};
+  color: ${(props) => props.theme.primaryTextColor};
 `;
 
 const GetInTouchWrapper = styled.div`
@@ -139,8 +149,24 @@ const GetInTouchWrapper = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  gap:5px;
-    color: ${props => props.theme.primaryTextColor};
+  gap: 5px;
+  color: ${(props) => props.theme.primaryTextColor};
+`;
+
+const ConnectWrapperElement = styled.div`
+  width: 400px;
+  margin:10px;
+    background: ${(props) => props.theme.connectElementBackground};
+  display:flex;
+  gap:50px;
+ font-family: "Lexend Deca", sans-serif;
+ padding:5px;
+ align-items:center;
+`;
+
+const ConnectWrapperElementDesc = styled.div`
+padding-top:10px;
+
 `;
 function Contact() {
   const [isLightMode, setIsLightMode] = useState(true);
@@ -165,7 +191,10 @@ function Contact() {
                     <span>Get in Touch</span>{" "}
                     <span>
                       {" "}
-                      Ready to Work Together? <span style={{color:' #ff0013'}}>Build a project with us!</span>
+                      Ready to Work Together?{" "}
+                      <span style={{ color: " #ff0013" }}>
+                        Build a project with us!
+                      </span>
                     </span>
                   </GetInTouchWrapper>
                   <br />
@@ -190,8 +219,24 @@ function Contact() {
                 </ContactWrapper>
               </LeftPart>
               <RightPart>
-                <PhoneWrapper />
-                <ConnectWrapper />
+                <PhoneWrapper>
+                  <img src={Phone} />
+                </PhoneWrapper>
+                <ConnectWrapper>
+                  <ConnectWrapperElement>
+                    <IconFactory />
+                    <ConnectWrapperElementDesc><span style={{fontSize:'18px', fontWeight:'500', color:`${isLightMode ? "#000":'#fff'}`}}>Email</span><p style={{fontSize:'16px', fontWeight:'500',  color:'#919191'}}>info@vrittechnologies.com</p></ConnectWrapperElementDesc>
+                  </ConnectWrapperElement>
+                  <ConnectWrapperElement>
+                    <IconFactory type="phone" />
+                    <ConnectWrapperElementDesc><span style={{fontSize:'18px', fontWeight:'500', color:`${isLightMode ? "#000":'#fff'}`}}>Phone</span><p style={{fontSize:'16px', fontWeight:'500', color:'#919191'}}>+9779888885756</p></ConnectWrapperElementDesc>
+                  </ConnectWrapperElement>
+                  <ConnectWrapperElement>
+                    <IconFactory type="address"/>
+                    <ConnectWrapperElementDesc><span style={{fontSize:'18px', fontWeight:'500', color:`${isLightMode ? "#000":'#fff'}`}}>Address</span><p style={{fontSize:'16px', fontWeight:'500', color:'#919191'}}>Sankhamul, Kathmandu</p></ConnectWrapperElementDesc>
+
+                  </ConnectWrapperElement>
+                </ConnectWrapper>
               </RightPart>
             </Container>
           </HomeWrapper>
