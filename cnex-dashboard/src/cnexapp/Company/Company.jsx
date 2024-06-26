@@ -26,7 +26,8 @@ import { formateDate } from '../../shared/utils/dateHelper';
 
 function Company() {
 const[data, setData] = useState([]);
-
+const[cdata, setCData] = useState([]);
+const[filterData, setFilterData] = useState(null);
 
  function fetchCompany()
 {
@@ -36,6 +37,7 @@ const[data, setData] = useState([]);
     }
   }).then((res)=>{
     setData(res.data)
+    setCData(res.data)
     console.log('rex com', res)
   })
 
@@ -45,6 +47,11 @@ const[data, setData] = useState([]);
 useEffect(()=>{
 fetchCompany();
 },[])
+
+useEffect(()=>{
+const newdata = cdata.filter((item)=> item.status===filterData?.status || item.category_id === filterData?.categoryId);
+setData(newdata);
+},[filterData])
 
 
 function toggleSwitch(checked, record)
@@ -90,7 +97,7 @@ const columns = [
 
 <Wrapper>
 
-  <Filter/>
+<Filter setFilterData={setFilterData}/>
 <DataTable columns={columns} data={data} />
 
 </Wrapper>

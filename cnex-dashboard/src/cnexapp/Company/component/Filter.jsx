@@ -5,7 +5,7 @@ import { DatePicker } from 'antd';
 
 const { RangePicker } = DatePicker;
 
-function Filter() {
+function Filter({setFilterData}) {
   return (
     <div style={{display:'flex', justifyContent:'space-between', gap:'20px', marginTop:'20px', marginRight:'20px', marginLeft:'20px'}}> 
      <div >
@@ -29,9 +29,8 @@ function Filter() {
      <Select
     showSearch
     placeholder="Category"
-    filterOption={(input, option) =>
-      (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-    }
+    onChange={(value)=> {
+      setFilterData({categoryId:value })}}
     options={[
       { value: '64098d52c2b7c95cc1486b13', label: 'Beverage10' },
       { value: '666167353583c53a22c6f0d7', label: 'INGO' },
@@ -43,9 +42,8 @@ function Filter() {
   <Select
     showSearch
     placeholder="Status"
-    filterOption={(input, option) =>
-      (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-    }
+    onChange={(value)=> {
+      setFilterData({status:value})}}
     options={[
       { value: true, label: 'ON' },
       { value: false, label: 'OFF' },
