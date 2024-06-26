@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet, Route, Router, Routes } from 'react-router-dom'
-import Dashboard from './Dashboard'
+import Dashboard from './Company/Company'
 import Sidebar from './Sidebar'
 
 function CnexProject() {

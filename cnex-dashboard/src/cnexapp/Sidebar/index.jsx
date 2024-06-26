@@ -3,6 +3,7 @@ import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/
 import { Avatar, Breadcrumb, Layout, Menu, theme } from 'antd';
 import Logo from '../../assets/images/logo.png'
 import IconFactory from '../../shared/component/icons';
+import { Link } from 'react-router-dom';
 const { Header, Content, Sider } = Layout;
 
 // const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
@@ -28,17 +29,53 @@ const items2 = [
   {
     key: `1`,
     icon: <IconFactory type='basket'/>,
-    label: `Products`,
+    label: `Company`,
     children:[ {
       key: `1-1`,
       icon: React.createElement(UserOutlined),
-      label: `Add Product`,
+      label: <Link to={'/cnex/company'}>Add Company</Link>,
       children:null
     }],
   },
 
   {
     key: `2`,
+    icon: React.createElement(UserOutlined),
+    label: `Orders`,
+    children:null
+  },
+  {
+    key: `3`,
+    icon: <IconFactory type='basket'/>,
+    label: `Company`,
+    children:[ {
+      key: `1-1`,
+      icon: React.createElement(UserOutlined),
+      label: <Link to={'/cnex/company'}>Add Company</Link>,
+      children:null
+    }],
+  },
+
+  {
+    key: `4`,
+    icon: React.createElement(UserOutlined),
+    label: `Orders`,
+    children:null
+  },
+  {
+    key: `5`,
+    icon: <IconFactory type='basket'/>,
+    label: `Company`,
+    children:[ {
+      key: `1-1`,
+      icon: React.createElement(UserOutlined),
+      label: <Link to={'/cnex/company'}>Add Company</Link>,
+      children:null
+    }],
+  },
+
+  {
+    key: `6`,
     icon: React.createElement(UserOutlined),
     label: `Orders`,
     children:null
