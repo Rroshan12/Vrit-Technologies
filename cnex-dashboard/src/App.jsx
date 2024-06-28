@@ -4,11 +4,13 @@ import CnexProject from './cnexapp'
 import Dashboard from './cnexapp/Company/Company'
 import Product from './cnexapp/Product'
 import { GlobalStyle } from './shared/utils/globalStyle'
+import { AppContextProvider } from './shared/context/AppContext'
 
 function App() {
 
   return (
-    <BrowserRouter>
+    <AppContextProvider>
+      <BrowserRouter>
     <GlobalStyle/>
       <Routes>
         <Route path = {'/cnex'} element={<CnexProject/>}>
@@ -18,6 +20,9 @@ function App() {
       </Routes>
     
     </BrowserRouter>
+
+    </AppContextProvider>
+    
    
   )
 }

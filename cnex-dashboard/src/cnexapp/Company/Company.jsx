@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import DataTable from '../../shared/component/DataTable'
 import PageHeader from '../../shared/component/PageHeader/PageHeader';
 import Wrapper from '../../shared/component/Wrapper';
-import { Switch } from 'antd';
+import { Modal, Switch } from 'antd';
 import Filter from './component/Filter';
 import axios from 'axios';
 import { Config } from '../../shared/utils/Config';
 import { formateDate } from '../../shared/utils/dateHelper';
+import CreateCompany from './component/CreateCompany';
 
 
 
@@ -28,7 +29,8 @@ function Company() {
 const[data, setData] = useState([]);
 const[cdata, setCData] = useState([]);
 const[filterData, setFilterData] = useState(null);
-
+const[loading, setLoading] = useState([false]);
+const[createModal, setCreateModal] = useState(false);
  function fetchCompany()
 {
   axios.get(Config.API_ENDPOINT+'/company',{
@@ -38,18 +40,26 @@ const[filterData, setFilterData] = useState(null);
   }).then((res)=>{
     setData(res.data)
     setCData(res.data)
+    setLoading(false)
     console.log('rex com', res)
   })
 
 
 }
 
-useEffect(()=>{
-fetchCompany();
-},[])
+function toggleCreateModal()
+{
+setCreateModal(!createModal);
+}
+
+
 
 useEffect(()=>{
-const newdata = cdata.filter((item)=> item.status===filterData?.status || item.category_id === filterData?.categoryId);
+fetchCompany();
+},[loading])
+
+useEffect(()=>{
+const newdata = cdata.filter((item)=> item.status===filterData?.status || item.category_id === filterData?.categoryId || (new Date(item.createdAt) >= new Date(filterData?.dates[0]) &&  new Date(item.createdAt) <= new Date(filterData?.dates[1]) ) );
 setData(newdata);
 },[filterData])
 
@@ -91,7 +101,7 @@ const columns = [
   return (
     <>
     <br/>
-<PageHeader pageHeader='Company' pageDesc='List of all company'/>
+<PageHeader pageHeader='Company' pageDesc='List of all company' handleButtonClick={toggleCreateModal}/>
 <br/>
 
 
@@ -102,6 +112,16 @@ const columns = [
 
 </Wrapper>
 
+<Modal
+        title="Create Company"
+        centered
+        open={createModal}
+        footer={null}
+        onCancel={toggleCreateModal}
+        
+      >
+       <CreateCompany loading={loading} setLoading={setLoading}/>
+      </Modal>
 
   
     </>

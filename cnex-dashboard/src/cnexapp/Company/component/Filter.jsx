@@ -25,12 +25,12 @@ function Filter({setFilterData}) {
    
     <div style={{display:'flex', justifyContent:'flex-end', gap:'20px'}} >
     <Search placeholder='Search...'/> 
-        <RangePicker />
+        <RangePicker onChange={((dates, dateString)=> { setFilterData({dates:dateString, status:null, categoryId:'' })})} />
      <Select
     showSearch
     placeholder="Category"
     onChange={(value)=> {
-      setFilterData({categoryId:value })}}
+      setFilterData({categoryId:value,dates:[], status:null,})}}
     options={[
       { value: '64098d52c2b7c95cc1486b13', label: 'Beverage10' },
       { value: '666167353583c53a22c6f0d7', label: 'INGO' },
@@ -43,7 +43,7 @@ function Filter({setFilterData}) {
     showSearch
     placeholder="Status"
     onChange={(value)=> {
-      setFilterData({status:value})}}
+      setFilterData({status:value,dates:[], categoryId:''})}}
     options={[
       { value: true, label: 'ON' },
       { value: false, label: 'OFF' },
