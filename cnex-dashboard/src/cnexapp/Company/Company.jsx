@@ -8,21 +8,13 @@ import axios from 'axios';
 import { Config } from '../../shared/utils/Config';
 import { formateDate } from '../../shared/utils/dateHelper';
 import CreateCompany from './component/CreateCompany';
+import IconFactory from '../../shared/component/icons';
+import UpdateCompany from './component/UpdateCompany';
 
 
 
 
-// const initialData = [];
-// for (let i = 0; i < 46; i++) {
-//   initialData.push({
-//     key: i,
-//     name: `Edward King ${i}`,
-//     age: 32,
-//     address: `London, Park Lane no. ${i}`,
-//     status:false
 
-//   });
-// }
 
 
 function Company() {
@@ -31,6 +23,8 @@ const[cdata, setCData] = useState([]);
 const[filterData, setFilterData] = useState(null);
 const[loading, setLoading] = useState([false]);
 const[createModal, setCreateModal] = useState(false);
+const[updateModal, setUpdateModal] = useState(false);
+const[editData, setEditData] = useState(null);
  function fetchCompany()
 {
   axios.get(Config.API_ENDPOINT+'/company',{
@@ -54,6 +48,7 @@ setCreateModal(!createModal);
 
 
 
+
 useEffect(()=>{
 fetchCompany();
 },[loading])
@@ -74,6 +69,15 @@ function toggleSwitch(checked, record)
 
 }
 
+function handleEdit(record)
+{
+
+  setUpdateModal(!updateModal);
+  setEditData(record);
+
+}
+
+
 const columns = [
   {
     title: 'Company Name',
@@ -93,6 +97,11 @@ const columns = [
     title: 'Status',
     dataIndex: 'status',
     render:(check,record)=>( <Switch checked={record.status}  onChange={(checked)=>toggleSwitch(checked,record)} />
+    )
+  },
+  {
+    title: 'Action',
+    render:(check,record)=>( <><IconFactory handleClick={()=> handleEdit(record)}  type='edit'/> <IconFactory type='delete'/></>
     )
   },
 ];
@@ -123,6 +132,16 @@ const columns = [
        <CreateCompany loading={loading} setLoading={setLoading}/>
       </Modal>
 
+      <Modal
+        title="Update Company"
+        centered
+        open={updateModal}
+        footer={null}
+        onCancel={()=> setUpdateModal(false)}
+        
+      >
+       <UpdateCompany loading={loading} setLoading={setLoading} record={editData}/>
+      </Modal>
   
     </>
   )
