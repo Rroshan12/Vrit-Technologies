@@ -73,6 +73,7 @@ function handleEdit(record)
 {
 
   setUpdateModal(!updateModal);
+  setEditData([]);
   setEditData(record);
 
 }
