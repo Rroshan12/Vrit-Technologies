@@ -14,7 +14,7 @@ function IconFactory({type, handleClick}) {
         case 'phone': return <Phone/>
         case 'basket': return <Basket/>
         case 'edit': return <EditIcon handleClick={handleClick}/>
-        case 'delete': return <Delete/>
+        case 'delete': return <Delete handleClick={handleClick}/>
         default: return <Email/>
     }
 }

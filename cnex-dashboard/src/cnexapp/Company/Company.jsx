@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import DataTable from '../../shared/component/DataTable'
 import PageHeader from '../../shared/component/PageHeader/PageHeader';
 import Wrapper from '../../shared/component/Wrapper';
@@ -10,6 +10,7 @@ import { formateDate } from '../../shared/utils/dateHelper';
 import CreateCompany from './component/CreateCompany';
 import IconFactory from '../../shared/component/icons';
 import UpdateCompany from './component/UpdateCompany';
+import { AppContext } from '../../shared/context/AppContext';
 
 
 
@@ -25,6 +26,7 @@ const[loading, setLoading] = useState([false]);
 const[createModal, setCreateModal] = useState(false);
 const[updateModal, setUpdateModal] = useState(false);
 const[editData, setEditData] = useState(null);
+const {openMessage} = useContext(AppContext);
  function fetchCompany()
 {
   axios.get(Config.API_ENDPOINT+'/company',{
@@ -78,6 +80,21 @@ function handleEdit(record)
 
 }
 
+function handleDelete(id)
+{
+  axios.delete(Config.API_ENDPOINT+`/company/${id}`,
+    {
+    headers:{
+      Authorization: `Bearer ${Config.BEARER_TOKEN}`
+    },
+  }).then((res)=>{
+    setLoading(!loading)
+    openMessage('success','Company Deleted Successfully!')
+    alert('ddd')
+  })
+
+}
+
 
 const columns = [
   {
@@ -102,7 +119,7 @@ const columns = [
   },
   {
     title: 'Action',
-    render:(check,record)=>( <><IconFactory handleClick={()=> handleEdit(record)}  type='edit'/> <IconFactory type='delete'/></>
+    render:(check,record)=>( <><IconFactory handleClick={()=> handleEdit(record)}  type='edit'/> <IconFactory type='delete' handleClick={()=> handleDelete(record._id)}/></>
     )
   },
 ];

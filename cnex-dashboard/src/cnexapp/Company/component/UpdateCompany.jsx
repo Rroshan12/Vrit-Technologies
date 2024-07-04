@@ -5,23 +5,21 @@ import { Config } from '../../../shared/utils/Config';
 import { AppContext } from '../../../shared/context/AppContext';
 
 function UpdateCompany({loading, setLoading, record}) {
-
-  const [editData, setEditData] = useState(record);
   const {openMessage} = useContext(AppContext);
-  const[basic] = Form.useForm();
+  const[form] = Form.useForm();
   console.log('re', record);
     const onFinish = (values) => {
 
       const updateValue ={
-        category_id: editData?.category_id,
+        category_id: record?.category_id,
         title: values.title,
         image: values.image,
-        status: editData.status,
-        createdAt: editData.createdAt,
-        updatedAt:  editData.updatedAt
+        status: record.status,
+        createdAt: record.createdAt,
+        updatedAt:  record.updatedAt
       }
 
-      axios.put(Config.API_ENDPOINT+`/company/${editData._id}`,
+      axios.put(Config.API_ENDPOINT+`/company/${record._id}`,
         updateValue,
         {
         headers:{
@@ -36,11 +34,19 @@ function UpdateCompany({loading, setLoading, record}) {
 
       };
 
-      useEffect(() => basic.resetFields(), [record]);
+      useEffect(() => {
+        if (record === null) {
+          form.resetFields();
+        } else {
+          form.setFieldsValue({
+            ...record
+          });
+        }
+      }, [record]);
   return (
     <Form
     name="basic"
-    form={basic}
+    form={form}
     labelCol={{
       span: 8,
     }}
@@ -50,7 +56,7 @@ function UpdateCompany({loading, setLoading, record}) {
     style={{
       maxWidth: 600,
     }}
-    initialValues={editData}
+    initialValues={record}
     onFinish={onFinish}
     autoComplete="off"
   >
@@ -65,7 +71,7 @@ function UpdateCompany({loading, setLoading, record}) {
         },
       ]}
     >
-      <Input value={editData.title} />
+      <Input value={record.title} />
     </Form.Item>
 
     <Form.Item
@@ -78,7 +84,7 @@ function UpdateCompany({loading, setLoading, record}) {
         },
       ]}
     >
-      <Input value={editData.image} />
+      <Input value={record.image} />
     </Form.Item>
     
     <Form.Item
